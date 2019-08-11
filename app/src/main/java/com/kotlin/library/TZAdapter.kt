@@ -1,7 +1,6 @@
 package com.kotlin.library
 
 import com.chad.library.adapter.base.BaseItemDraggableAdapter
-import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.util.MultiTypeDelegate
 
@@ -21,9 +20,10 @@ class TZAdapter : BaseItemDraggableAdapter<TZBean, BaseViewHolder>(null) {
     override fun convert(helper: BaseViewHolder, item: TZBean?) {
         when (helper.itemViewType) {
             1 -> {
-
+                helper.setText(R.id.tvTittle, item?.text)
             }
             2 -> {
+                helper.setImageResource(R.id.ivImage, R.mipmap.ic_launcher)
 
             }
         }
