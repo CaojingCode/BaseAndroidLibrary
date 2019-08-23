@@ -1,15 +1,17 @@
 package com.kotlin.library
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import com.chad.library.adapter.base.entity.MultiItemEntity
-import kotlinx.android.synthetic.main.activity_main.*
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.chad.library.adapter.base.BaseItemDraggableAdapter
+import com.blankj.utilcode.util.CrashUtils
+import com.blankj.utilcode.util.ScreenUtils
 import com.chad.library.adapter.base.callback.ItemDragAndSwipeCallback
 import com.chad.library.adapter.base.listener.OnItemDragListener
+import kotlinx.android.synthetic.main.activity_main.*
+import xcrash.XCrash
+import java.lang.Exception
 
 
 class MainActivity : AppCompatActivity() {
@@ -17,10 +19,13 @@ class MainActivity : AppCompatActivity() {
     val adapter = TZAdapter()
     private val itemDragAndSwipeCallback = object : ItemDragAndSwipeCallback(adapter) {
         override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
+            //这里可以限制某些特定的item不支持长按拖拽，
             if (viewHolder.itemViewType == 1) {
+                //如果是文字类型
                 return ItemTouchHelper.Callback.makeMovementFlags(0, 0)
             } else {
                 if (viewHolder.adapterPosition == 9) {
+                    //这里只是一个实例，限制第9个item不支持拖拽，目前写死，可以根据业务逻辑来自行处理
                     return ItemTouchHelper.Callback.makeMovementFlags(0, 0)
                 }
             }
@@ -32,6 +37,7 @@ class MainActivity : AppCompatActivity() {
             source: RecyclerView.ViewHolder,
             target: RecyclerView.ViewHolder
         ): Boolean {
+            //这里限制拖动结束后，不容许交换的item位置，目前写死，可以根据业务逻辑来自行处理
             if (target.adapterPosition == 9) {
                 return false
             }
@@ -48,6 +54,10 @@ class MainActivity : AppCompatActivity() {
         rlDrag.adapter = adapter
         adapter.enableDragItem(itemTouchHelper)
         itemTouchHelper.attachToRecyclerView(rlDrag)
+
+        buttonAction.setOnClickListener {
+            ScreenUtils.screenShot(this)
+        }
 
         adapter.setOnItemDragListener(object : OnItemDragListener {
             override fun onItemDragMoving(
@@ -97,7 +107,7 @@ class MainActivity : AppCompatActivity() {
             var bean = TZBean()
             when (i) {
                 0, 10, 20, 30, 40, 50, 60, 70, 80, 90 -> {
-                    bean = TZBean(1, "我是测试数据图片类型很长的额$i", "", 1)
+                    bean = TZBean(1, "我是测试数据图片类型很长的额$i\n第二行", "", 1)
 
                 }
                 else -> {

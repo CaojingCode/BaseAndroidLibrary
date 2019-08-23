@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--<Transition-->
+            <!--app:constraintSetEnd="@id/ending_set"-->
+            <!--app:constraintSetStart="@id/starting_set">-->
+        <!--<OnSwipe-->
+                <!--app:dragDirection="dragUp"-->
+                <!--app:touchAnchorId="@id/scrollView"-->
+                <!--app:touchAnchorSide="top"/>-->
+
+        <!--<KeyFrameSet>-->
+            <!--<KeyAttribute-->
+                    <!--app:framePosition="60"-->
+                    <!--app:motionTarget="@id/ivPic">-->
+                <!--<CustomAttribute-->
+                        <!--app:attributeName="imageAlpha"-->
+                        <!--app:customIntegerValue="255"/>-->
+            <!--</KeyAttribute>-->
+            <!--<KeyAttribute-->
+                    <!--app:framePosition="90"-->
+                    <!--app:motionTarget="@id/ivPic"-->
+            <!--&gt;-->
+                <!--<CustomAttribute-->
+                        <!--app:attributeName="imageAlpha"-->
+                        <!--app:customIntegerValue="0"-->
+                <!--/>-->
+            <!--</KeyAttribute>-->
+        <!--</KeyFrameSet>-->
+    <!--</Transition>-->
+
+
+    <!--<ConstraintSet android:id="@+id/starting_set">-->
+        <!--<Constraint android:id="@id/ivPic"-->
+                    <!--app:layout_constraintTop_toTopOf="parent"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="300dp"/>-->
+        <!--<Constraint android:id="@id/tvTittle"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="0dp"-->
+                    <!--/>-->
+        <!--/>-->
+    <!--</ConstraintSet>-->
+
+    <!--<ConstraintSet android:id="@+id/ending_set">-->
+        <!--<Constraint android:id="@id/ivPic"-->
+                    <!--app:layout_constraintTop_toTopOf="parent"-->
+                    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_marginTop="60dp"-->
+                    <!--android:layout_height="60dp"/>-->
+        <!--<Constraint android:id="@id/tvTittle"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="60dp"-->
+                    <!--android:alpha="1"/>-->
+        <!--/>-->
+    <!--</ConstraintSet>-->
+
+</MotionScene>
