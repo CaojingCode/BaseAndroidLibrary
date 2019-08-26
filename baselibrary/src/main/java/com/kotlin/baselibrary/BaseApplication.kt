@@ -5,6 +5,7 @@ import android.content.Context
 import com.blankj.utilcode.util.CrashUtils
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.Utils
+import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager
 import com.zhouyou.http.EasyHttp
 import com.zhouyou.http.model.HttpHeaders
 
@@ -16,6 +17,7 @@ abstract class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         Utils.init(this)
+        QMUISwipeBackActivityManager.init(this)
         EasyHttp.init(this)
         EasyHttp.getInstance().setBaseUrl("https://www.wanandroid.com")
             .debug(AppConfig.TAG, BuildConfig.DEBUG)

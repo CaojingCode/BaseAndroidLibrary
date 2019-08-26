@@ -55,6 +55,10 @@ dependencies {
 
     //https://github.com/WVector/AppUpdate
     api 'com.qianwen:update-app-kotlin:1.2.3'
+    //https://qmuiteam.com/android/get-started
+    api 'com.qmuiteam:qmui:1.4.0'
+    //可以使用 arch 库提供的 QMUIFragment、QMUIFragmentActivity、QMUIActivity 来作为基础类构建自己的界面了。
+    api "com.qmuiteam:arch:0.6.1"
 }
 repositories {
     mavenCentral()
