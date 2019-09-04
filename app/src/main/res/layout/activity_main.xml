@@ -1,27 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:layout_height="match_parent">
 
-    <com.qmuiteam.qmui.widget.QMUIViewPager
+    <androidx.viewpager.widget.ViewPager
             android:id="@+id/mViewPager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/app_content_bg_color"
-            app:layout_constraintBottom_toTopOf="@+id/mTabSegment"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintBottom_toTopOf="@+id/alphaIndicator"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <com.qmuiteam.qmui.widget.QMUITabSegment
-            android:id="@+id/mTabSegment"
+
+    <com.yinglan.alphatabs.AlphaTabsIndicator
+            android:id="@+id/alphaIndicator"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/home_tab_height"
+            android:layout_height="70dp"
             android:background="@drawable/qmui_list_item_bg_with_border_top"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:qmui_tab_icon_position="top" />
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent">
 
+        <com.yinglan.alphatabs.AlphaTabView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="@dimen/IndicatorPadding"
+                app:paddingTexwithIcon="@dimen/paddingTextWithIcon"
+                app:tabIconNormal="@mipmap/img_bottom_index_v2"
+                app:tabIconSelected="@mipmap/img_bottom_index_select_v2"
+                app:tabText="首页"
+                app:tabTextSize="13sp"
+                app:textColorNormal="#999999"
+                app:textColorSelected="#46c01b" />
+
+        <com.yinglan.alphatabs.AlphaTabView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="@dimen/IndicatorPadding"
+                app:paddingTexwithIcon="@dimen/paddingTextWithIcon"
+                app:tabIconNormal="@mipmap/img_bottom_information_v2"
+                app:tabIconSelected="@mipmap/img_bottom_information_select_v2"
+                app:tabText="体系"
+                app:tabTextSize="13sp"
+                app:textColorNormal="#999999"
+                app:textColorSelected="#46c01b" />
+
+        <com.yinglan.alphatabs.AlphaTabView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="@dimen/IndicatorPadding"
+                app:paddingTexwithIcon="@dimen/paddingTextWithIcon"
+                app:tabIconNormal="@mipmap/img_bottom_mess_v2"
+                app:tabIconSelected="@mipmap/img_bottom_mess_select_v2"
+                app:tabText="项目"
+                app:tabTextSize="13sp"
+                app:textColorNormal="#999999"
+                app:textColorSelected="#46c01b" />
+
+
+        <com.yinglan.alphatabs.AlphaTabView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="@dimen/IndicatorPadding"
+                app:paddingTexwithIcon="@dimen/paddingTextWithIcon"
+                app:tabIconNormal="@mipmap/img_bottom_my_v2"
+                app:tabIconSelected="@mipmap/img_bottom_my_select_v2"
+                app:tabText="我的"
+                app:tabTextSize="13sp"
+                app:textColorNormal="#999999"
+                app:textColorSelected="#46c01b" />
+
+    </com.yinglan.alphatabs.AlphaTabsIndicator>
 </androidx.constraintlayout.widget.ConstraintLayout>
