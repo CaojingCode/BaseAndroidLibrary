@@ -10,6 +10,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : BaseActivity() {
+    override fun closeAllWebView() {
+    }
 
     private var fragments = mutableListOf<Fragment>()
 
@@ -17,12 +19,16 @@ class MainActivity : BaseActivity() {
         return R.layout.activity_main
     }
 
+    override fun isFullScreen(): Boolean {
+        return true
+    }
+
     override fun initView() {
-        setFullScreen()
         fragments.addBy(IndexFragment()).addBy(SecondFragment()).addBy(IndexFragment())
             .addBy(SecondFragment())
         mViewPager.adapter = MainPagerAdapte(supportFragmentManager, fragments)
         alphaIndicator.setViewPager(mViewPager)
+
     }
 
 }

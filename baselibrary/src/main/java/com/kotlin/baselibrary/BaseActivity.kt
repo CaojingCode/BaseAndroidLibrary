@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import com.blankj.utilcode.util.ActivityUtils
@@ -14,19 +15,25 @@ import kotlinx.android.synthetic.main.activity_base.*
  * Created by Caojing on 2019/9/4.
  *  你不是一个人在战斗
  */
-@Suppress("DEPRECATION")
 abstract class BaseActivity : QMUIActivity(), View.OnClickListener {
     override fun onClick(p0: View?) {
         when (p0?.id) {
             R.id.ivBack, R.id.tvBack -> backAction()
+            R.id.rightButton->closeAllWebView()
         }
     }
+
+    abstract fun closeAllWebView()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
         setContentLayout(layoutId())
+        setFullScreen()
         initView()
+        ivBack.setOnClickListener(this)
+        tvBack.setOnClickListener(this)
+        rightButton.setOnClickListener(this)
     }
 
 
@@ -51,9 +58,14 @@ abstract class BaseActivity : QMUIActivity(), View.OnClickListener {
     }
 
     //设置铺满全屏，隐藏标题栏
-    fun setFullScreen(): BaseActivity {
-        clTopBar.visibility = View.GONE
-        return this
+    private fun setFullScreen() {
+        if (isFullScreen())
+            clTopBar.visibility = View.GONE
+    }
+
+    //子类继承父类可实现此方法来设置是否全屏显示
+    open fun isFullScreen(): Boolean {
+        return false
     }
 
     //设置标题名称
@@ -103,8 +115,30 @@ abstract class BaseActivity : QMUIActivity(), View.OnClickListener {
     }
 
     //点击返回要执行的方法
-    fun backAction() {
-        onBackPressed()
+    open fun backAction() {
+        finish()
+    }
+
+    override fun doOnBackPressed() {
+        backAction()
+    }
+
+    private var disableAllClick: Boolean = false
+
+    //禁用所有触摸事件
+    fun setDisableAllClick(disableAllClick: Boolean): BaseActivity {
+        this.disableAllClick = disableAllClick
+        return this
+    }
+
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        return if (!disableAllClick) {
+            super.dispatchTouchEvent(ev)
+        } else {
+            disableAllClick
+        }
+
     }
 
 }
@@ -116,6 +150,7 @@ fun BaseActivity.toIntent(intent: Intent) {
 fun BaseActivity.toActivity(activity: BaseActivity) {
     ActivityUtils.startActivity(activity::class.java)
 }
+
 
 //fun BaseActivity.toActivity(clz: Class<out BaseActivity>) {
 //    ActivityUtils.startActivity(clz)

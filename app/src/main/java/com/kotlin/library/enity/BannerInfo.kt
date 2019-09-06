@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class BannerInfo(
     @SerializedName("data")
-    var `data`: List<Data> = listOf(),
+    var `data`: MutableList<Data> = mutableListOf(),
     @SerializedName("errorCode")
     var errorCode: Int = 0,
     @SerializedName("errorMsg")

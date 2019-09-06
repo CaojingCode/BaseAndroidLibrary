@@ -3,8 +3,15 @@
         xmlns:tools="http://schemas.android.com/tools"
         package="com.kotlin.library">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- if you want to load images from a file OR from the internet -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -35,7 +42,6 @@
         <activity android:name=".activity.WebViewActivity" >
 
         </activity>
-
     </application>
 
 </manifest>
