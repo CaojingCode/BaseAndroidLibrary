@@ -114,6 +114,12 @@ abstract class BaseActivity : QMUIActivity(), View.OnClickListener {
         return this
     }
 
+    //设置右边按钮显示
+    fun setRightVisible():BaseActivity{
+        rightButton.visibility=View.VISIBLE
+        return this
+    }
+
     //点击返回要执行的方法
     open fun backAction() {
         finish()

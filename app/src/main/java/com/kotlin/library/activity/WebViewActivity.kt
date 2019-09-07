@@ -15,6 +15,10 @@ class WebViewActivity : BaseWebActivity() {
         ActivityUtils.finishActivity(WebViewActivity::class.java)
     }
 
+    override fun initView() {
+        super.initView()
+    }
+
     override fun jumWebView(url: String) {
         val intent = Intent(this, WebViewActivity::class.java)
         intent.putExtra("url", url)
@@ -22,10 +26,10 @@ class WebViewActivity : BaseWebActivity() {
     }
 
     override fun getUrl(): String {
-        val url=intent.getStringExtra("url")
-        if (url!=null){
+        val url = intent.getStringExtra("url")
+        if (url != null) {
             return url
-        }else{
+        } else {
             throw SecurityException("url不能为空")
         }
     }

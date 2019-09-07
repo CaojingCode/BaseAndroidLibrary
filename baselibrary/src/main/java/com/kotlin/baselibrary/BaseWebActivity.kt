@@ -3,6 +3,12 @@ package com.kotlin.baselibrary
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Bitmap
+import android.os.Build
+import android.view.View.GONE
+import android.view.View.VISIBLE
+import com.blankj.utilcode.util.LogUtils
+import com.tencent.smtt.export.external.interfaces.WebResourceError
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest
 import com.tencent.smtt.sdk.WebChromeClient
 import com.tencent.smtt.sdk.WebSettings
 import com.tencent.smtt.sdk.WebView
@@ -17,24 +23,28 @@ abstract class BaseWebActivity : BaseActivity() {
 
     lateinit var webSetting: WebSettings
 
-    var mIsPageLoading: Boolean = false
+    var mIsPageLoading: Boolean = false //标识网页是否重定向
+
+    var mIsPageError: Boolean = false //标识网页是否出错
 
     override fun layoutId(): Int {
         return R.layout.activity_webview
     }
 
     override fun initView() {
+        setRightVisible()
         setWebSetting()
-
         llWebView.loadUrl(getUrl())
         llWebView.webViewClient = object : WebViewClient() {
+
             override fun shouldOverrideUrlLoading(p0: WebView?, p1: String?): Boolean {
-//                llWebView.loadUrl(p1)
                 //如果该链接发生了重定向，回调shouldOverrideUrlLoading会在回调onPageFinished之前。
                 if (mIsPageLoading) {
                     //表示回调为重定向。
                     return false
                 }
+                if (mIsPageError)
+                    return false
                 jumWebView(p1.toString())
                 return true
             }
@@ -42,17 +52,34 @@ abstract class BaseWebActivity : BaseActivity() {
             override fun onPageStarted(p0: WebView?, p1: String?, p2: Bitmap?) {
                 super.onPageStarted(p0, p1, p2)
                 mIsPageLoading = true
+                mIsPageError = false
             }
 
             override fun onPageFinished(p0: WebView?, p1: String?) {
                 super.onPageFinished(p0, p1)
                 mIsPageLoading = false
             }
+
+            override fun onReceivedError(p0: WebView?, p1: Int, p2: String?, p3: String?) {
+                mIsPageError = true
+            }
+
         }
         llWebView.webChromeClient = object : WebChromeClient() {
             override fun onReceivedTitle(p0: WebView?, p1: String?) {
                 setTittleText(p1.toString())
             }
+
+            override fun onProgressChanged(p0: WebView?, p1: Int) {
+                if (p1 == 100) {
+                    progressBar.visibility = GONE
+                } else {
+                    if (progressBar.visibility == GONE)
+                        progressBar.visibility = VISIBLE
+                    progressBar.progress = p1
+                }
+            }
+
         }
 
     }
