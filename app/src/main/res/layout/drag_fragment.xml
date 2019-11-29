@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+      >
+
+
+    <LinearLayout
+            android:id="@+id/llContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:behavior_hideable="true"
+            app:behavior_peekHeight="400dp"
+            app:layout_behavior="@string/bottom_sheet_behavior"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+                android:id="@+id/llTopLayout"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+            <View
+                    android:layout_width="80dp"
+                    android:layout_height="5dp"
+                    android:background="@color/qmui_config_color_gray_9"
+                    android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clTopTittle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                android:background="#FFFFFF"
+                android:padding="20dp">
+
+
+            <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="钢化新村2街"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                    android:id="@+id/tvPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="3365元/m²"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+
+
+            <TextView
+                    android:id="@+id/tvArea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="武昌 楚河汉街  10套在售"
+                    app:layout_constraintTop_toBottomOf="@+id/tvName"
+                    android:layout_marginTop="15dp"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+
+            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    android:id="@+id/buttonOne"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    app:qmui_backgroundColor="#FFFFFF"
+                    android:text="button1"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+
+            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    android:id="@+id/buttonTwo"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    app:qmui_backgroundColor="#FFFFFF"
+                    android:text="button2"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/qmui_config_color_gray_1"
+                />
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

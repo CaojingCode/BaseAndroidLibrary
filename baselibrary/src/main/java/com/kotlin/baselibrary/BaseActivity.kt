@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.htmlEncode
+import androidx.core.util.toHalf
 import com.blankj.utilcode.util.ActivityUtils
 import com.qmuiteam.qmui.arch.QMUIActivity
 import kotlinx.android.synthetic.main.activity_base.*
@@ -23,7 +25,9 @@ abstract class BaseActivity : QMUIActivity(), View.OnClickListener {
         }
     }
 
-    abstract fun closeAllWebView()
+    open fun closeAllWebView(){
+         finish()
+     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -146,6 +150,8 @@ abstract class BaseActivity : QMUIActivity(), View.OnClickListener {
         }
 
     }
+
+
 
 }
 

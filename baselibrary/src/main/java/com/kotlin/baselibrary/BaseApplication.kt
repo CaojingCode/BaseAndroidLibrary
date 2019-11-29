@@ -9,8 +9,6 @@ import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.Utils
 import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager
 import com.tencent.smtt.sdk.QbSdk
-import com.zhouyou.http.EasyHttp
-import com.zhouyou.http.model.HttpHeaders
 
 /**
  * Created by Caojing on 2019/8/21.
@@ -21,8 +19,6 @@ open class BaseApplication : Application() {
         super.onCreate()
         Utils.init(this)
         QMUISwipeBackActivityManager.init(this)
-        EasyHttp.init(this)
-        initHttp()
         CrashUtils.init { crashInfo, e ->
             LogUtils.d("崩溃异常信息\n$crashInfo")
         }
@@ -41,14 +37,6 @@ open class BaseApplication : Application() {
         }
         //x5内核初始化接口
         QbSdk.initX5Environment(this, cb)
-    }
-
-    private fun initHttp(): EasyHttp {
-        return EasyHttp.getInstance().setBaseUrl(AppConfig.baseUrl)
-            .debug(AppConfig.TAG, BuildConfig.DEBUG)
-            .setReadTimeOut((AppConfig.timeOut * 1000).toLong())
-            .setWriteTimeOut((AppConfig.timeOut * 1000).toLong())
-            .setConnectTimeout((AppConfig.timeOut * 1000).toLong())
     }
 
     override fun attachBaseContext(base: Context?) {

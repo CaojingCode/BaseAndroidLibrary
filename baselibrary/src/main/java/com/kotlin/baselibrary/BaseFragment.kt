@@ -53,6 +53,11 @@ abstract class BaseFragment : QMUIFragment() {
             fragmentView.clTopBar.visibility = View.GONE
     }
 
+
+    fun setFullScreen(visibility:Int) {
+            fragmentView.clTopBar.visibility = visibility
+    }
+
     //子类继承父类可实现此方法来设置是否全屏显示
     open fun isFullScreen(): Boolean {
         return false
@@ -69,6 +74,7 @@ abstract class BaseFragment : QMUIFragment() {
         fragmentView.tvTittle.setTextColor(resources.getColor(colorId))
         return this
     }
+
 
     //设置标题栏颜色
     fun setTittleBarColor(colorId: Int): BaseFragment {

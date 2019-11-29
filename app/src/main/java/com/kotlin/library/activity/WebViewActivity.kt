@@ -1,9 +1,14 @@
 package com.kotlin.library.activity
 
 import android.content.Intent
+import android.view.MotionEvent
 import com.blankj.utilcode.util.ActivityUtils
 import com.kotlin.baselibrary.BaseWebActivity
 import com.kotlin.baselibrary.toIntent
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import java.util.logging.Handler
 
 
 /**
