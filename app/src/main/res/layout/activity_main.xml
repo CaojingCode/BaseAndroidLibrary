@@ -18,7 +18,8 @@
             android:layout_height="70dp"
             android:background="@drawable/qmui_list_item_bg_with_border_top"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="gone">
 
         <com.yinglan.alphatabs.AlphaTabView
                 android:layout_width="0dp"
@@ -74,4 +75,39 @@
                 app:textColorSelected="#46c01b" />
 
     </com.yinglan.alphatabs.AlphaTabsIndicator>
+
+
+    <com.otaliastudios.cameraview.CameraView
+            android:id="@+id/cameraKitView"
+            android:keepScreenOn="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cameraVideoSizeMaxWidth="1280"
+            app:cameraVideoSizeBiggest="true"
+            />
+    <ImageView
+            android:id="@+id/ivBg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"/>
+
+    <com.kotlin.library.view.CircleProgressBar
+            android:id="@+id/btnVideo"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginBottom="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="#FFFFFF"/>
+
+    <ImageView
+            android:id="@+id/ivVideo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintTop_toTopOf="@+id/btnVideo"
+            app:layout_constraintBottom_toBottomOf="@+id/btnVideo"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="20dp"
+            android:scaleType="centerCrop"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

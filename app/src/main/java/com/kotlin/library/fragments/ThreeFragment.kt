@@ -49,8 +49,8 @@ class ThreeFragment : BaseFragment() {
         viewFinder.addOnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
             updateTransform()
         }
-    }
 
+    }
 
     private fun startCamera() {
         //相机配置
